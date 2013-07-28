@@ -9,9 +9,10 @@ db = shelve.open("app.db", writeback=True)
 db.setdefault("entries", {})
 store = db["entries"]
 
-from parse import from_file
+from parse import from_url, eztv_feed_url
 def update():
-    added = from_file(store, "feed.xml")
+    #added = from_file(store, "feed.xml")
+    added = from_url(store, eztv_feed_url)
     print "Added: " + str(added)
 
 @app.route("/")
