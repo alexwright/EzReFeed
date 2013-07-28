@@ -1,14 +1,6 @@
 define("views/torrent_list",
-    ["jquery", "underscore", "backbone", "collections/torrents"],
-    function ($, _, Backbone, Torrents) {
-        var TorrentListViewItem = Backbone.View.extend({
-            tagName: "li",
-            initialize: function () {
-            },
-            render: function () {
-                this.$el.html("<a href='#'>" + this.model.get("title") + "</a>");
-            }
-        });
+    ["jquery", "underscore", "backbone", "collections/torrents", "views/torrent_list_item"],
+    function ($, _, Backbone, Torrents, TorrentListViewItem) {
         var TorrentListView = Backbone.View.extend({
             initialize: function () {
                 this._views = {};
@@ -38,7 +30,6 @@ define("views/torrent_list",
                 });
                 view.render();
                 this._views[model.cid] = view;
-                console.log("getting view for model: ", model);
                 return view.el;
             }
         });
