@@ -6,7 +6,13 @@ define("views/torrent_list_item",
             initialize: function () {
             },
             render: function () {
-                this.$el.html("<a href='#'>" + this.model.get("title") + "</a>");
+                var margetLink = "<a href='%uri'>[magnet]</a>"
+                        .replace('%uri', this.model.getMagnetURI()),
+                    commentsLink = "<a href='%uri'>[comments]</a>"
+                        .replace('%uri', this.model.get("comments")),
+                    titleSpan = "<span>%title</span>"
+                        .replace('%title', this.model.get("title"));
+                this.$el.html([margetLink, commentsLink, titleSpan].join(" "));
             }
         });
         return TorrentListViewItem;
