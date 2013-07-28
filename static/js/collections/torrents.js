@@ -1,7 +1,8 @@
 define("collections/torrents",
-    ["jquery", "underscore", "backbone"],
-    function ($, _, Backbone) {
+    ["jquery", "underscore", "backbone", "models/torrent"],
+    function ($, _, Backbone, Torrent) {
         var Torrents = Backbone.Collection.extend({
+            model: Torrent,
             url: "/torrents",
             parse: function (res) {
                 /* The /torrents endpoint is going to give us an object of:
