@@ -1,4 +1,6 @@
-from flask import Flask, json
+DEBUG = True
+
+from flask import Flask, json, render_template
 app = Flask(__name__)
 app.config.from_object(__name__)
 
@@ -14,7 +16,7 @@ def update():
 
 @app.route("/")
 def main_index():
-    return "Hi!"
+    return render_template("index.html")
 
 @app.route("/torrents")
 def get_torrents():
